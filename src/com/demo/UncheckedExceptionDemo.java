@@ -10,21 +10,19 @@ public class UncheckedExceptionDemo {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter size");
-        int size = scanner.nextInt();
+        boolean flag = true;
         System.out.println("Enter numbers");
-        int[] numbers = new int[size];
 
-        try {
-            for (int i = 0; i < numbers.length; i++) {
-                numbers[i] = scanner.nextInt();
+        while (flag) {
+            try {
+                int number = scanner.nextInt();
+                System.out.println(number);
+                flag = false;
+            } catch (InputMismatchException e) {
+                System.out.println(e);
+                System.out.println("enter integer values");
+                scanner.nextLine();
             }
-            numbers = null;
-            System.out.println(numbers.length);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println(e);
-        } catch (InputMismatchException e) {
-            System.out.println(e);
         }
     }
 }
